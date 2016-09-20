@@ -77,6 +77,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'AccountCtrl'
       }
     }
+  })
+
+  .state('tab.map', {
+    url: '/map',
+    views: {
+      'tab-map': {
+        templateUrl: '../app/map/map.view.html',
+        controller: 'mapCtrl',
+        controllerAs: 'vm'
+      }
+    }
   });
 
   // if none of the above states are matched, use this as the fallback
