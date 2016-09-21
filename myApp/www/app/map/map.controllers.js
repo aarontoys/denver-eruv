@@ -4,9 +4,9 @@
   .module('starter')
   .controller('mapCtrl', mapCtrl);
 
-  mapCtrl.$inject = [];
+  mapCtrl.$inject = ['mapService'];
 
-  function mapCtrl () {
+  function mapCtrl (mapService) {
     var vm = this;
 
     vm.test = 'hello world';
@@ -40,6 +40,7 @@
 
     map.addListener('click', function(event) {
       console.log('test', event.latLng.lat(),', ', event.latLng.lng());
+      mapService.addMapCoords(event.latLng.lat(), event.latLng.lng());
     });
   }
 
