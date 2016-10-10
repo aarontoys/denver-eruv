@@ -15,6 +15,12 @@
           lat: lat,
           lon: lon,
         });
+      },
+      lookupAddress: function (lat, lon) {
+        return $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lon+'+&key=AIzaSyDm4rpHOtR3CuS4uBugM_7FqzRFYleLMyY')
+          .then(function(result) {
+            return console.log(result.data.results[0].formatted_address);
+          });
       }
     };
   }

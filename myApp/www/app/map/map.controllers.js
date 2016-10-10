@@ -41,6 +41,7 @@
     map.addListener('click', function(event) {
       console.log('test', event.latLng.lat(),', ', event.latLng.lng());
       mapService.addMapCoords(event.latLng.lat(), event.latLng.lng());
+      mapService.lookupAddress(event.latLng.lat(), event.latLng.lng());
     });
   }
 
