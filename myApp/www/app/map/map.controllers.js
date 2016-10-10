@@ -4,9 +4,9 @@
   .module('starter')
   .controller('mapCtrl', mapCtrl);
 
-  mapCtrl.$inject = ['mapService'];
+  mapCtrl.$inject = ['mapService', '$location'];
 
-  function mapCtrl (mapService) {
+  function mapCtrl (mapService, $location) {
     var vm = this;
 
     vm.test = 'hello world';
@@ -42,6 +42,7 @@
       console.log('test', event.latLng.lat(),', ', event.latLng.lng());
       mapService.addMapCoords(event.latLng.lat(), event.latLng.lng());
       mapService.lookupAddress(event.latLng.lat(), event.latLng.lng());
+      $location.path('tab/reportForm');
     });
   }
 

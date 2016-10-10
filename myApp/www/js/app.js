@@ -69,12 +69,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.reportForm', {
+    url: '/reportForm',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      'tab-reportForm': {
+        templateUrl: '../app/reportForm/reportForm.view.html',
+        controller: 'reportFormCtrl',
+        controllerAs: 'vm'
       }
     }
   })
