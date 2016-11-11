@@ -73,7 +73,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     url: '/reportForm',
     views: {
       'tab-reportForm': {
-        templateUrl: '../app/reportForm/reportForm.view.html',
+        templateUrl: 'app/reportForm/reportForm.view.html',
         controller: 'reportFormCtrl',
         controllerAs: 'vm'
       }
@@ -84,7 +84,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     url: '/map',
     views: {
       'tab-map': {
-        templateUrl: '../app/map/map.view.html',
+        templateUrl: 'app/map/map.view.html',
         controller: 'mapCtrl',
         controllerAs: 'vm'
       }
