@@ -21,5 +21,6 @@ function getLog () {
 }
 
 module.exports = {
-  addLog: addLog
+  addLog: addLog,
+  getLog: getLog
 };
