@@ -42,7 +42,7 @@
 
     // vm.submit = () => logService.createLogItem (0,0,0,'7337 E Cedar','lat','lon','base64 text');
     vm.submit = function (issue, severity) {
-      logService.createLogItem (1,issue,severity,vm.address,vm.position,vm.img);
+      logService.createLogItem (1,issue,severity,vm.address.address,vm.position,vm.img);
     };
 
     // function loadData () {
