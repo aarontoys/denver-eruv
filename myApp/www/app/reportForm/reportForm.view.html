@@ -88,6 +88,8 @@
       <button class="button button-block button-positive" ng-click="vm.submit()">Submit</button>
       <p>{{vm.issue}}</p>
       <p>{{vm.severity}}</p>
-      <img src="" id="myImage" width="100%"></div>
+      <!-- <img src="" id="myImage" width="100%"> -->
+      <img ng-src={{vm.img}} width="100%">
+    </div>
   </ion-content>
 </ion-view>

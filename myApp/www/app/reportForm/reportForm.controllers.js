@@ -28,8 +28,9 @@
 
       $cordovaCamera.getPicture(options).then(function(imageData) {
         console.log(imageData);
-        var image = document.getElementById('myImage');
-        image.src = "data:image/jpeg;base64," + imageData;
+
+        // var image = document.getElementById('myImage');
+        vm.img = "data:image/jpeg;base64," + imageData;
       }, function(err) {
         // error
         console.log(err);
