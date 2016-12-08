@@ -15,7 +15,7 @@
     if (dev) {
       uri = 'http://localhost:5000/'
     } else {
-      uir = 'https://denver-eruv.herokuapp.com/'
+      uri = 'https://denver-eruv.herokuapp.com/'
     }
 
     return {
