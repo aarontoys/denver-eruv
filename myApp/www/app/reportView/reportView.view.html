@@ -2,96 +2,11 @@
   <ion-content>
     <div class="list">
       <div class="item item-divider">
-        {{vm.test}}
+        Report
       </div>
-
-      <p>{{vm.test}}</p>
-      <div class="row" style="padding: 0px">
-        <div class="col"  style="padding: 0px">
-          <label class="item item-input item-stacked-label" style="    border-right-width: 0px;
-                border-top-width: 0px;
-                border-bottom-width: 0px;">
-            <span class="input-label" style="color: #666">Latitude:</span>
-            <input type="text" placeholder="Suhr" value="{{vm.position.myLat}}">
-          </label>
-        </div>
-        <div class="col" style="padding: 0px">
-          <label class="item item-input item-stacked-label" style="    border-right-width: 0px;
-                border-top-width: 0px;
-                border-bottom-width: 0px;">
-            <span class="input-label" style="color: #666">Longitude:</span>
-            <input type="text" placeholder="Suhr" value="{{vm.position.myLon}}">
-          </label>
-        </div>
-      </div>
-<!--       <label class="item item-input">
-        <div class="col">
-          <p>Lat:</p>
-        </div>
-        <div class="col">
-          <p>{{vm.test.myLat}}</p>
-        </div>
-      </label>
-      <label class="item item-input">
-        <div class="col">
-          <p>Lon:</p>
-        </div>
-        <div class="col">
-          <p>{{vm.test.myLon}}</p>
-        </div>
-      </label> -->
-      <label class="item item-input item-stacked-label">
-<!--         <div class="col">
-          <p>Approx Address</p>
-        </div>
-        <div class="col">
-          <p>{{vm.address.address}}</p>
-        </div> -->
-        <span class="input-label">Approx Address</span>
-        <input type="text" placeholder="Suhr" value="{{vm.address.address}}">
-      </label>
-      <div class="item item-divider">
-        Reporting:
-      </div>
-      <label class="item item-input item-select">
-        <div class="input-label">
-          Issue:
-        </div>
-        <select ng-model="vm.issue" ng-options="issue.id as issue.issue for issue in vm.issues">
-          <option value= "" disabled selected="selected">Issue:</option>
-        </select>
-<!--         <select>
-          <option>Pole</option>
-          <option>Lechi</option>
-          <option>Fence</option>
-          <option>String</option>
-          <option>Other</option>
-        </select> -->
-      </label>      
-      <label class="item item-input item-select">
-        <div class="input-label">
-          Severity:
-        </div>
-        <select ng-model="vm.severity" ng-options="severity.id as severity.severity for severity in vm.severities">
-          <option value= "" disabled selected="selected">Severity:</option>
-        </select>
-
-<!--         <select>
-          <option>Eruv is Down</option>
-          <option>Needs 2nd Opinion</option>
-          <option>Question</option>
-          <option>Maintenance Issue (still up)</option>
-          <option>Other</option>
-        </select> -->
-      </label>
-      <!-- <button  class="button button-block style="font-size: 50px"> -->
-        <i class="icon ion-camera text-center positive" style="font-size: 150px; display: block;" ng-click="vm.takePhoto()"></i>
-      <!-- </button> -->
-      <button class="button button-block button-positive" ng-click="vm.submit(vm.issue, vm.severity)">Submit</button>
-      <p>{{vm.issue}}</p>
-      <p>{{vm.severity}}</p>
-      <!-- <img src="" id="myImage" width="100%"> -->
-      <img ng-src={{vm.img}}
-    </div>
+      <div class="item" ng-repeat="item in vm.report">
+        <img ng-src={{item.img}} height="100px">
+        <p>{{item.address}}</p>
+    </div>  
   </ion-content>
 </ion-view>

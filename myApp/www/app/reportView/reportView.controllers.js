@@ -14,6 +14,7 @@
     reportService.getReport()
     .then(function (result) {
       console.log(result);
+      vm.report = result.data.result;
     })
     .catch(function (err) {
       console.log(err);
