@@ -41,8 +41,8 @@
     };
 
     // vm.submit = () => logService.createLogItem (0,0,0,'7337 E Cedar','lat','lon','base64 text');
-    vm.submit = function () {
-      logService.createLogItem (1,0,1,'7337 E Cedar','93.333','104.444','SGVsbG8gQ29kZWJlYXV0aWZ5');
+    vm.submit = function (issue, severity) {
+      logService.createLogItem (1,issue,severity,vm.address,vm.position,vm.img);
     };
 
     // function loadData () {
