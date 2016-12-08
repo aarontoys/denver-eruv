@@ -43,7 +43,7 @@
         //     /*return*/ address.address = result.data.results[0].formatted_address;
         //     return result;
         //   });
-        return $http.get(uri+'/map?lat='+lat+'&lon='+lon)
+        return $http.get(uri+'map?lat='+lat+'&lon='+lon)
         .then(function (result) {
           console.log(result);
                    /*return*/ console.log(result.data.result.results[0].formatted_address);
