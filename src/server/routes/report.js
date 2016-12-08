@@ -81,4 +81,18 @@ router.post('/postLog', function (req, res, next) {
   });
 });
 
+router.get('/report', function (req, res, next) {
+  Report.getLog()
+  .then(function (result) {
+    res.status(200).json({
+      status: 'success',
+      result: result
+    });
+  })
+  .catch(function (err) {
+    console.log(err);
+    return next(err);
+  });
+})
+
 module.exports = router;

@@ -16,6 +16,9 @@ function addLog (userId, issueId, severityId, address, lat, lon, img) {
   });
 }
 
+function getLog () {
+  return Report();
+}
 
 module.exports = {
   addLog: addLog
