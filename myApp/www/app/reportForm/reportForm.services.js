@@ -9,10 +9,18 @@
   logService.$inject = ['$http'];
 
   function logService ($http) {
+    var dev = false;
+    var uri;
+
+    if (dev) {
+      uri = 'http://localhost:5000/'
+    } else {
+      uir = 'https://denver-eruv.herokuapp.com/'
+    }
 
     return {
       createLogItem: function (userId, issueId, severityId, address, lat, lon, img) {
-        return $http.post('http://localhost:5000/postLog', {
+        return $http.post(uri+'postLog', {
           userId: userId,
           issueId: issueId,
           severityId: severityId,
@@ -23,7 +31,7 @@
         });
       },
       getDropDownData: function () {
-        return $http.get('http://localhost:5000/')
+        return $http.get(uri)
         .then(function (result) {
           console.log(result.data);
           return result.data;

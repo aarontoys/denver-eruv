@@ -10,6 +10,15 @@
 
   function mapService ($http, $cordovaGeolocation) {
 
+    var dev = false;
+    var uri;
+
+    if (dev) {
+      uri = 'http://localhost:5000/'
+    } else {
+      uir = 'https://denver-eruv.herokuapp.com/'
+    }
+
     var myPosition = {
       myLat: '',
       myLon: ''
@@ -20,7 +29,7 @@
 
     return {
       addMapCoords: function (lat, lon) {
-        return $http.post('http://localhost:5000/addCoords', {
+        return $http.post(uri+'addCoords', {
           lat: lat,
           lon: lon,
         });
@@ -34,7 +43,7 @@
         //     /*return*/ address.address = result.data.results[0].formatted_address;
         //     return result;
         //   });
-        return $http.get('http://localhost:5000/map?lat='+lat+'&lon='+lon)
+        return $http.get(uri+'/map?lat='+lat+'&lon='+lon)
         .then(function (result) {
           console.log(result);
                    /*return*/ console.log(result.data.result.results[0].formatted_address);
