@@ -55,30 +55,39 @@
         <div class="input-label">
           Issue:
         </div>
-        <select>
+        <select ng-model="vm.issue" ng-options="issue.id as issue.issue for issue in vm.issues">
+          <option value= "" disabled selected="selected">Issue:</option>
+        </select>
+<!--         <select>
           <option>Pole</option>
           <option>Lechi</option>
           <option>Fence</option>
           <option>String</option>
           <option>Other</option>
-        </select>
+        </select> -->
       </label>      
       <label class="item item-input item-select">
         <div class="input-label">
           Severity:
         </div>
-        <select>
+        <select ng-model="vm.severity" ng-options="severity.id as severity.severity for severity in vm.severities">
+          <option value= "" disabled selected="selected">Severity:</option>
+        </select>
+
+<!--         <select>
           <option>Eruv is Down</option>
           <option>Needs 2nd Opinion</option>
           <option>Question</option>
           <option>Maintenance Issue (still up)</option>
           <option>Other</option>
-        </select>
+        </select> -->
       </label>
       <!-- <button  class="button button-block style="font-size: 50px"> -->
         <i class="icon ion-camera text-center positive" style="font-size: 150px; display: block;" ng-click="vm.takePhoto()"></i>
       <!-- </button> -->
-      <button class="button button-block button-positive">Submit</button>
+      <button class="button button-block button-positive" ng-click="vm.submit()">Submit</button>
+      <p>{{vm.issue}}</p>
+      <p>{{vm.severity}}</p>
       <img src="" id="myImage" width="100%"></div>
   </ion-content>
 </ion-view>

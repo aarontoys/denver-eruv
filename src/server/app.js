@@ -1,3 +1,6 @@
+// *** load env variables *** //
+require('dotenv').config();
+
 // *** main dependencies *** //
 var express = require('express');
 var path = require('path');
@@ -9,7 +12,9 @@ var swig = require('swig');
 
 
 // *** routes *** //
-var routes = require('./routes/index.js');
+// var routes = require('./routes/index.js');
+var routes = require('./routes/report.js');
+var mapRoutes = require('./routes/maps.js');
 
 
 // *** express instance *** //
@@ -42,6 +47,7 @@ app.use(function(req, res, next) {
 
 // *** main routes *** //
 app.use('/', routes);
+app.use('/', mapRoutes);
 
 
 // catch 404 and forward to error handler

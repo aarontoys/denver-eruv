@@ -4,9 +4,9 @@
   .module('starter')
   .controller('reportFormCtrl', reportFormCtrl);
 
-  reportFormCtrl.$inject = ['mapService', '$cordovaCamera']
+  reportFormCtrl.$inject = ['mapService', 'logService', '$cordovaCamera']
 
-  function reportFormCtrl (mapService, $cordovaCamera) {
+  function reportFormCtrl (mapService, logService, $cordovaCamera) {
     var vm = this;
     vm.test = mapService.getPosition();
     vm.address = mapService.getAddress();
@@ -19,8 +19,8 @@
         sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: false,
         encodingType: Camera.EncodingType.JPEG,
-        // targetWidth: 100,
-        // targetHeight: 100,
+        targetWidth: 1008,
+        targetHeight: 756,
         popoverOptions: CameraPopoverOptions,
         saveToPhotoAlbum: true,
         correctOrientation:true
@@ -38,6 +38,26 @@
     // }, false);
 
     };
+
+    // vm.submit = () => logService.createLogItem (0,0,0,'7337 E Cedar','lat','lon','base64 text');
+    vm.submit = function () {
+      logService.createLogItem (1,0,1,'7337 E Cedar','93.333','104.444','SGVsbG8gQ29kZWJlYXV0aWZ5');
+    };
+
+    // function loadData () {
+    logService.getDropDownData()
+    .then(function (result) {
+      vm.issues = result.issues;
+      vm.severities = result.severities;
+      console.log(vm.issues);
+    })
+    .catch(function (err) {
+      console.log(err);
+      return err;
+    })
+
+    // vm.issues = dropDowns.reportFormCtrl
+    // }
   }
 
 
