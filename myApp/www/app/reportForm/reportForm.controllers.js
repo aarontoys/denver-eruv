@@ -8,7 +8,7 @@
 
   function reportFormCtrl (mapService, logService, $cordovaCamera) {
     var vm = this;
-    vm.test = mapService.getPosition();
+    vm.position = mapService.getPosition();
     vm.address = mapService.getAddress();
     // vm.address = 'test';
     vm.takePhoto = function () {

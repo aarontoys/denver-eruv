@@ -19,14 +19,14 @@
     }
 
     return {
-      createLogItem: function (userId, issueId, severityId, address, lat, lon, img) {
+      createLogItem: function (userId, issueId, severityId, address, position, img) {
         return $http.post(uri+'postLog', {
           userId: userId,
           issueId: issueId,
           severityId: severityId,
           address: address,
-          lat: lat,
-          lon: lon,
+          lat: position.lat,
+          lon: position.lon,
           img: img
         });
       },
