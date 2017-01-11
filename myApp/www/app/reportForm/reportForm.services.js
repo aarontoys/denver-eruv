@@ -25,8 +25,8 @@
           issueId: issueId,
           severityId: severityId,
           address: address,
-          lat: position.lat,
-          lon: position.lon,
+          lat: position.myLat,
+          lon: position.myLon,
           img: img
         });
       },
