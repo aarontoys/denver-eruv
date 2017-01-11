@@ -1,4 +1,5 @@
 var knex = require('./knex');
+var now = new Date();
 
 var Report = function () {return knex('report_log');};
 
@@ -12,7 +13,9 @@ function addLog (userId, issueId, severityId, address, lat, lon, img) {
       address: address,
       lat: lat,
       lon: lon,
-      img: img
+      img: img,
+      created_at: now,
+      updated_at: now
   });
 }
 
