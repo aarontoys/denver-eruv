@@ -21,7 +21,17 @@
       return err;
     });
 
-
+    vm.doRefresh = function () {
+      reportService.getReport()
+      .then(function (result) {
+        console.log(result);
+        vm.report = result.data.result;
+      })
+      .catch(function (err) {
+        console.log(err);
+        return err;
+      });
+    }
   }
 
 
