@@ -74,10 +74,11 @@ router.post('/postLog', function (req, res, next) {
   var body = req.body;
   console.log('line75: body: '/*, body*/);
   Report.addLog(body.userId, body.issueId, body.severityId, body.address, body.lat, body.lon, body.img)
-  .then(function (result) {
-    console.log('line78 return id: ', result);
+  .then(function (id) {
+    console.log('line78 return id: ', id);
     res.status(200).json({
-      status: 'success'
+      status: 'success',
+      result: id
     });
   });
 });

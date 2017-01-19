@@ -28,6 +28,13 @@
           lat: position.myLat,
           lon: position.myLon,
           img: img
+        })
+        .then(function (result) {
+          console.log(result)
+        })
+        .catch(function (err) {
+          console.log(err);
+          return err;
         });
       },
       getDropDownData: function () {
