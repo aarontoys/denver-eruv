@@ -74,7 +74,8 @@ router.post('/postLog', function (req, res, next) {
   var body = req.body;
   console.log('body', body);
   Report.addLog(body.userId, body.issueId, body.severityId, body.address, body.lat, body.lon, body.img)
-  .then(function () {
+  .then(function (result) {
+    console.log('line78 return id: ', result);
     res.status(200).json({
       status: 'success'
     });

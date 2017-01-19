@@ -16,7 +16,7 @@ function addLog (userId, issueId, severityId, address, lat, lon, img) {
       img: img,
       created_at: now,
       updated_at: now
-  });
+  }, 'id');
 }
 
 function getLog () {
