@@ -4,7 +4,7 @@ var now = new Date();
 var Report = function () {return knex('report_log');};
 
 function addLog (userId, issueId, severityId, address, lat, lon, img) {
-  console.log('line6', userId);
+  // console.log('line6', userId);
   return Report()
   .insert({
       user_id: userId,

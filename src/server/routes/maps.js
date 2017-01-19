@@ -22,7 +22,7 @@ router.get('/map', function(req, res, next) {
   var lon = req.query.lon;
   request('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lon+'&key='+apikey)
   .then(function (result) {
-    console.log(result);
+    // console.log(result);
     res.status(200).json({
       status: 'success',
       result: JSON.parse(result)

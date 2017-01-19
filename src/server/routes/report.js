@@ -72,7 +72,7 @@ router.post('/addCoords', function(req, res, next) {
 
 router.post('/postLog', function (req, res, next) {
   var body = req.body;
-  console.log('body', body);
+  console.log('line75: body: '/*, body*/);
   Report.addLog(body.userId, body.issueId, body.severityId, body.address, body.lat, body.lon, body.img)
   .then(function (result) {
     console.log('line78 return id: ', result);
