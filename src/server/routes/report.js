@@ -17,11 +17,11 @@ router.get('/', /*render,*/ getIssues, getSeverities, sendData);
   // }
 
   function getIssues (req, res, next) {
-    console.log('line20');
+    // console.log('line20');
     Issues.getIssues()
     .then(function(result) {
       req.issues = result;
-      console.log(result);
+      // console.log(result);
       // res.status(200).json({
       //   status: 'success',
       //   data: result
@@ -29,7 +29,7 @@ router.get('/', /*render,*/ getIssues, getSeverities, sendData);
       return next();
     })
     .catch(function (err) {
-      console.log(err);
+      console.log('error: report.js: line32: ', err);
       return next(err);
     });
   }
@@ -38,7 +38,7 @@ router.get('/', /*render,*/ getIssues, getSeverities, sendData);
     Severities.getSeverities()
     .then(function(result) {
       req.severities = result;
-      console.log(result);
+      // console.log(result);
       // res.status(200).json({
       //   status: 'success',
       //   data: result
@@ -46,7 +46,7 @@ router.get('/', /*render,*/ getIssues, getSeverities, sendData);
       return next();
     })
     .catch(function (err) {
-      console.log(err);
+      console.log('error: report.js: line49: ', err);
       return next(err);
     });
   }
@@ -61,7 +61,7 @@ router.get('/', /*render,*/ getIssues, getSeverities, sendData);
 
 router.post('/addCoords', function(req, res, next) {
   var body = req.body;
-  console.log(body);
+  // console.log(body);
   Coords.addCoords(body.lat, body.lon)
   .then(function() {
     res.status(200).json({
@@ -91,7 +91,7 @@ router.get('/report', function (req, res, next) {
     });
   })
   .catch(function (err) {
-    console.log(err);
+    console.log('error: report.js: line93: ', err);
     return next(err);
   });
 })
