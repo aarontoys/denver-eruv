@@ -31,6 +31,7 @@
         })
         .then(function (result) {
           console.log(result)
+          return result.data.result;
         })
         .catch(function (err) {
           console.log(err);

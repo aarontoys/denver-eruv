@@ -86,8 +86,9 @@
         <i class="icon ion-camera text-center positive" style="font-size: 150px; display: block;" ng-click="vm.takePhoto()"></i>
       <!-- </button> -->
       <button class="button button-block button-positive" ng-click="vm.submit(vm.issue, vm.severity)">Submit</button>
-      <p>{{vm.issue}}</p>
-      <p>{{vm.severity}}</p>
+      <p>Img Len: {{vm.imgLen}}</p>
+      <p>Success: {{vm.success}}</p>
+      <p>Id: {{vm.id}}</p>
       <!-- <img src="" id="myImage" width="100%"> -->
       <img ng-src={{vm.img}} width="100%">
     </div>

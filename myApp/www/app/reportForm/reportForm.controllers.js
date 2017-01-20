@@ -28,9 +28,11 @@
 
       $cordovaCamera.getPicture(options).then(function(imageData) {
         console.log(imageData);
+        // console.log(imageData.length);
 
         // var image = document.getElementById('myImage');
         vm.img = "data:image/jpeg;base64," + imageData;
+        vm.imgLen = imageData.length;
       }, function(err) {
         // error
         console.log(err);
@@ -42,7 +44,19 @@
 
     // vm.submit = () => logService.createLogItem (0,0,0,'7337 E Cedar','lat','lon','base64 text');
     vm.submit = function (issue, severity) {
-      logService.createLogItem (1,issue,severity,vm.address.address,vm.position,vm.img);
+      logService.createLogItem (1,issue,severity,vm.address.address,vm.position,vm.img)
+      .then(function (result) {
+        if (result[0]) {
+          vm.success = 'Successful! Id = ' + result[0];
+          vm.id = result[0];
+        } else {
+          vm.success = 'Image is too large. Please try again'
+        }
+      })
+      .catch (function (err) {
+        vm.success = 'Error: ', err;
+        return err;
+      });
     };
 
     // function loadData () {
