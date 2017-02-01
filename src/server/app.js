@@ -43,7 +43,6 @@ app.use(express.static(path.join(__dirname, '../client')));
 
 // *** allow CORS *** //
 app.use(function(req, res, next) {
-  console.log('allow CORS middleware');
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();

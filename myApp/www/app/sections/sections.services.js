@@ -12,7 +12,7 @@
     var dev = false;
     var uri;
 
-    dev = true;
+    // dev = true;
 
     if (dev) {
       uri = 'http://localhost:5000/api/'
