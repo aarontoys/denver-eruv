@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'production') {
   host = 'http://localhost:5000/';
 }
 
-router.get('/map', function(req, res, next) {
+router.get('/', function(req, res, next) {
   // res.render('index', { title: 'Express' });
   // res.sendFile('/index.html')
   console.log('qs: ', req.query);

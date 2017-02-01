@@ -12,15 +12,17 @@
     var dev = false;
     var uri;
 
+    dev = true;
+
     if (dev) {
-      uri = 'http://localhost:5000/'
+      uri = 'http://localhost:5000/api/'
     } else {
-      uri = 'https://denver-eruv.herokuapp.com/'
+      uri = 'https://denver-eruv.herokuapp.com/api/'
     }
 
     return {
       createLogItem: function (userId, issueId, severityId, address, position, img) {
-        return $http.post(uri+'postLog', {
+        return $http.post(uri+'report/postLog', {
           userId: userId,
           issueId: issueId,
           severityId: severityId,
@@ -38,8 +40,9 @@
           return err;
         });
       },
+      // rename getDropDownData to getAppData and move to app loading
       getDropDownData: function () {
-        return $http.get(uri)
+        return $http.get(uri+'app-data')
         .then(function (result) {
           console.log(result.data);
           return result.data;

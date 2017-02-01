@@ -13,8 +13,10 @@ var swig = require('swig');
 
 // *** routes *** //
 // var routes = require('./routes/index.js');
-var routes = require('./routes/report.js');
+var report = require('./routes/report.js');
 var mapRoutes = require('./routes/maps.js');
+var sections = require('./routes/sections.js');
+var appData = require('./routes/appData.js')
 
 
 // *** express instance *** //
@@ -37,17 +39,21 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client')));
+// app.use('/ionic', express.static(path.join(__dirname, '../../myApp/www')));
 
 // *** allow CORS *** //
 app.use(function(req, res, next) {
+  console.log('allow CORS middleware');
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
 // *** main routes *** //
-app.use('/', routes);
-app.use('/', mapRoutes);
+app.use('/api/report', report);
+app.use('/api/map', mapRoutes);
+app.use('/api/sections', sections);
+app.use('/api/app-data', appData);
 
 
 // catch 404 and forward to error handler

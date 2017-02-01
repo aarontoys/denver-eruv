@@ -13,10 +13,12 @@
     var dev = false;
     var uri;
 
+    dev = true;    
+
     if (dev) {
-      uri = 'http://localhost:5000/'
+      uri = 'http://localhost:5000/api/'
     } else {
-      uri = 'https://denver-eruv.herokuapp.com/'
+      uri = 'https://denver-eruv.herokuapp.com/api/'
     }
 
     var myPosition = {
@@ -29,7 +31,7 @@
 
     return {
       addMapCoords: function (lat, lon) {
-        return $http.post(uri+'addCoords', {
+        return $http.post(uri+'report/addCoords', {
           lat: lat,
           lon: lon,
         });
