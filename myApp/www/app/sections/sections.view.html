@@ -1,0 +1,35 @@
+
+<ion-view>
+  <ion-content>
+<!--     <p>hellow world</p>
+    <h3>Testing</h3>
+    <p>{{vm.test}}</p>
+    <div id="map"></div> -->
+    <div class="list">
+      <div class="item item-icon-right" ng-repeat="section in vm.sections">
+        <!-- <div class="item"> -->
+        <i class="icon
+          ng-class:{
+            'ion-checkmark-circled balanced':section.status_id===1,
+            'ion-close-circled assertive':section.status_id===2,
+            'ion-more':section.status_id===3,
+            'ion-load-a':section.status_id===4,
+            'ion-person balanced':section.status_id===5,
+            'ion-person assertive':section.status_id===6}
+            ">
+        </i>        
+<!--         <i class="icon
+          ng-class:{
+            1:[ion-checkmark-circled, positive],
+            2:'ion-close-circled',
+            2:'assertive',
+            3:'balanced',
+            4:'ion-load-a'}[section.status_id]">
+        </i> -->
+        {{section.status_id}}: {{section.name}}  
+      </div>
+    </div>
+      <!-- </li> -->
+    <!-- </ul> -->
+  </ion-content>
+</ion-view>

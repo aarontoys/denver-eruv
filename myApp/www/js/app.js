@@ -99,6 +99,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         controllerAs: 'vm'
       }
     }
+  })
+
+  .state('tab.sections', {
+    url: '/sections',
+    views: {
+      'tab-sections': {
+        templateUrl: 'app/sections/sections.view.html',
+        controller: 'sectionsCtrl',
+        controllerAs: 'vm'
+      }
+    }
   });
 
   // if none of the above states are matched, use this as the fallback
