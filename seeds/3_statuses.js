@@ -13,31 +13,37 @@ exports.seed = function(knex, Promise) {
   return knex('statuses').del()
   .then(function () {
     return knex('statuses').insert({
+      id: 1,
       status: 'Up'
     });
   })
   .then(function () {
     return knex('statuses').insert({
+      id: 2,
       status: 'Down'
     });
   })
   .then(function () {
     return knex('statuses').insert({
+      id: 3,
       status: 'Pending Check'
     });
   })
   .then(function () {
     return knex('statuses').insert({
+      id: 4,
       status: 'Check in Progress'
     });
   })
   .then(function () {
     return knex('statuses').insert({
+      id: 5,
       status: 'Assigned'
     });
   })
   .then(function () {
     return knex('statuses').insert({
+      id: 6,
       status: 'Unassigned'
     });
   });

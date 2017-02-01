@@ -13,30 +13,35 @@ exports.seed = function(knex, Promise) {
   return knex('sections').del()
   .then(function () {
     return knex('sections').insert({
+      id: 1,
       name: 'Alleyway between Jackson and Harrison Streets',
       status_id: 1,
     });
   })
   .then(function () {
     return knex('sections').insert({
+      id: 2,
       name: '13th and 14th Streets',
       status_id: 2,
     });
   })
   .then(function () {
     return knex('sections').insert({
+      id: 3,
       name: 'Magnolia to Lowry',
       status_id: 3,
     });
   })
   .then(function () {
     return knex('sections').insert({
+      id: 4,
       name: 'AMLI/Lowry Park Apartments',
       status_id: 4,
     });
   })
   .then(function () {
     return knex('sections').insert({
+      id: 5,
       name: 'Firehouse to Quebec/Leetsdale',
       status_id: 5,
       description: 'Starts on corner of SW corner Quebec & Leetsdale on Leetsdale where Burger King is and continues to the back of the Firehouse on Alameda where the fence connects to the AMLI appartment fence.',
@@ -50,6 +55,7 @@ exports.seed = function(knex, Promise) {
   })
   .then(function () {
     return knex('sections').insert({
+      id: 6,
       name: 'Quebec/Leetsdale to Cherry Creek N Dr',
       status_id: 6,
       description: 'Starts where lechi connects to fence near the end of the bike path and con to SW corner of Quebec & Leetsdale on Quebec.',
@@ -63,18 +69,21 @@ exports.seed = function(knex, Promise) {
   })
   .then(function () {
     return knex('sections').insert({
+      id: 7,
       name: 'Cherry Creek Bike Path',
       status_id: 1,
     });
   })
   .then(function () {
     return knex('sections').insert({
+      id: 8,
       name: 'Staybridge to Alleyway',
       status_id: 2,
     });
   })
   .then(function () {
     return knex('sections').insert({
+      id: 9,
       name: 'Ekar Farm',
       status_id: 3,
     });

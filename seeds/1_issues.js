@@ -12,26 +12,31 @@ exports.seed = function(knex, Promise) {
   return knex('issues').del()
   .then(function () {
     return knex('issues').insert({
+      id: 1,
       issue: 'Pole'
     });
   })
   .then(function () {
     return knex('issues').insert({
+      id: 2,
       issue: 'Lechi'
     });
   })
   .then(function () {
     return knex('issues').insert({
+      id: 3,
       issue: 'Fence'
     });
   })
   .then(function () {
     return knex('issues').insert({
+      id: 4,
       issue: 'String'
     });
   })
   .then(function () {
     return knex('issues').insert({
+      id: 5,
       issue: 'Other'
     });
   });
