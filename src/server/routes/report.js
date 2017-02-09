@@ -109,6 +109,6 @@ router.get('/', function (req, res, next) {
     console.log('error: report.js: line93: ', err);
     return next(err);
   });
-})
+});
 
 module.exports = router;

@@ -1,7 +1,11 @@
 var knex = require('./knex');
 var now = new Date();
 
-var Report = function () {return knex('report_log');};
+var Report = function () {
+  return knex('report_log')
+          .join('issues', 'report_log.issue_id', '=', 'issues.id')
+          .join('severities', 'report_log.severity_id', '=', 'severities.id');
+};
 
 function addLog (userId, issueId, severityId, address, lat, lon, img) {
   // console.log('line6', userId);

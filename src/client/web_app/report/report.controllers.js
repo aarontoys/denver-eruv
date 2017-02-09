@@ -2,17 +2,15 @@
 
   angular
   .module('eruvApp')
-  .controller('reportCtrl', reportCtrl)
+  .controller('reportCtrl', reportCtrl);
 
-  reportCtrl.$inject = ['reportService']
+  reportCtrl.$inject = ['reportService'];
 
   function reportCtrl (reportService) {
     var vm = this;
     var maps = {};
     var infos = [];
     var map;
-
-    vm.test = 'reportCtrl is working!'
 
     // console.log('console is working')
     reportService.getReport()
@@ -57,13 +55,16 @@
       var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
       var markers = vm.report.filter(function(el) {
-        return el.lat
+        return el.lat;
       }).map(function(el, i) {
         // console.log(typeof +el.lat, +el.lat);
         // console.log(typeof +el.lon, +el.lon);
         myLatLng = new google.maps.LatLng(+el.lat, +el.lon);
-        // console.log(myLatLng);
-        var content = '<h4>Address:</h4><p>' + el.address + '</p><img src=' + el.img + ' width=250px>';
+        console.log(el);
+        var content = 
+          '<h4>Issue:</h4><p>' + el.issue + '</p>' +
+          '<h4>Severity:</h4><p>' + el.severity + '</p>' +
+          '<h4>Address:</h4><p>' + el.address + '</p><img src=' + el.img + ' width=250px>';
         // console.log('content: ', content);
         var infowindow = new google.maps.InfoWindow();
 
@@ -82,11 +83,11 @@
           infowindow.setContent(content);
           infowindow.open(map,marker);
           infos[0] = infowindow;
-        })
+        });
 
         google.maps.event.addListener(infowindow, 'closeclick', function () {
           resetMap(true);
-        })
+        });
         return marker;
           // console.log('test');
       });
