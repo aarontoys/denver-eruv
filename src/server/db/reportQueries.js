@@ -32,7 +32,13 @@ function getLog () {
   return Report();
 }
 
+function getLogDetail (id) {
+  return Report()
+  .where('report_log.id', id)
+}
+
 module.exports = {
   addLog: addLog,
-  getLog: getLog
+  getLog: getLog,
+  getLogDetail: getLogDetail
 };

@@ -111,4 +111,21 @@ router.get('/', function (req, res, next) {
   });
 });
 
+router.get('/:id', function (req, res, next) {
+  // console.log(req.params);
+  // console.log(parseInt(req.params));
+  var id = parseInt(req.params.id);
+  Report.getLogDetail(id)
+  .then(function (result) {
+    res.status(200).json({
+      status: 'success',
+      result: result
+    });
+  })
+  .catch(function (err) {
+    console.log('error: report.js: line123: ', err);
+    return next(err);
+  });
+});
+
 module.exports = router;

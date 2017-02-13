@@ -68,12 +68,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   //       }
   //     }
   //   })
+
   .state('tab.reportView', {
     url: '/reportView',
     views: {
       'tab-reportView': {
         templateUrl: 'app/reportView/reportView.view.html',
         controller: 'reportViewCtrl',
+        controllerAs: 'vm'
+      }
+    }
+  })
+  .state('tab.report-detail', {
+    url: '/reportView/:reportId',
+    views: {
+      'tab-reportView': {
+        templateUrl: 'app/reportDetail/reportDetail.view.html',
+        controller: 'reportDetailCtrl',
         controllerAs: 'vm'
       }
     }

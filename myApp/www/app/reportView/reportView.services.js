@@ -24,7 +24,18 @@
       getReport: function () {
         return $http.get(uri+'report')
         .then(function (result) {
-          console.log(result);
+          // console.log(result);
+          return result;
+        })
+        .catch(function (err) {
+          console.log(err);
+          return err;
+        });
+      },
+      getReportDetail: function (id) {
+        return $http.get(uri + 'report/' + id)
+        .then(function (result) {
+          // console.log(result);
           return result;
         })
         .catch(function (err) {
