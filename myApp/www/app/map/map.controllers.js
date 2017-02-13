@@ -9,29 +9,30 @@
   function mapCtrl (mapService, $location, $timeout, $cordovaGeolocation, $cordovaCamera) {
     var vm = this;
 
-    vm.test = 'hello world';
+    // vm.test = 'hello world';
 
     // initMap();
     var lat;
     var lon;
+    var oldLat;
+    var oldLon;
 
     var posOptions = {timeout: 10000, enableHighAccuracy: true};
 
-    console.log('line20: ', mapService.getPosition());
+    // console.log('line20: ', mapService.getPosition());
 
-
-
-    
     function getGeoLoc () {
       $cordovaGeolocation
       .getCurrentPosition(posOptions)
       .then(function (position) {
         lat  = position.coords.latitude;
         lon = position.coords.longitude;
-        console.log('lat: ',lat, 'long: ',lon);
+        // console.log('lat: ',lat, 'long: ',lon);
         map.setCenter({lat:lat, lng:lon});
         map.setZoom(20);
         map.setMapTypeId('satellite');
+        oldLat = lat.toFixed(4);
+        oldLon = lon.toFixed(4);
       }, function(err) {
         // error
         console.log(err);
@@ -44,7 +45,7 @@
 
     function initMap () {
       // Create a map object and specify the DOM element for display.
-      console.log('working?');
+      // console.log('working?');
       map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 39.71788288458772, lng: -104.91222381591797},
         scrollwheel: false,
@@ -67,7 +68,7 @@
     line.setMap(map);
 
     map.addListener('click', function(event) {
-      console.log('test', event.latLng.lat(),', ', event.latLng.lng());
+      // console.log('test', event.latLng.lat(),', ', event.latLng.lng());
       mapService.addMapCoords(event.latLng.lat(), event.latLng.lng());
       mapService.lookupAddress(event.latLng.lat(), event.latLng.lng());
       placeMarker(event.latLng);
@@ -78,31 +79,97 @@
     });
 
     function placeMarker(location) {
-    var marker = new google.maps.Marker({
+      var marker = new google.maps.Marker({
         position: location, 
         map: map,
         draggable: true,
         animation: google.maps.Animation.DROP,
+      });
+    }
+
+    var watchOptions = {
+      timeout : 10000,
+      enableHighAccuracy: true // may cause errors if true
+    };
+
+    var watch;
+
+
+    startWatch();
+    // var count = 0;
+
+    function startWatch () {
+      // console.log('watch started');
+      // console.log('line109: ',watch);
+      // console.log(watch)
+      // var oldLat = lat.toFixed(3);
+      // var oldLon = lon.toFixed(3);
+
+      // if (!watch) {
+
+      watch = $cordovaGeolocation.watchPosition(watchOptions);
+        // console.log('watch executed: ', watch.watchID);
+      // }
+
+      watch.then(
+        null, function(err) {
+          // console.log('line118', err);
+          // console.log('watchID: ', watch.watchID);
+        },
+        function(position) {
+          // console.log('lat: ', lat, ' lon: ', lon);
+          // console.log('line101: position: ',position);
+          // console.log('watchID: ', watch.watchID);
+
+          // vm.refresh = new Date(position.timestamp).toLocaleString();
+
+          var newLat = position.coords.latitude.toFixed(4);
+          var newLon = position.coords.longitude.toFixed(4);
+
+          if (newLat !== oldLat || newLon !== oldLon) {
+
+            map.panTo({lat: position.coords.latitude, lng: position.coords.longitude});
+            // vm.moved = 'moving';
+            oldLat = newLat;
+            oldLon = newLon;
+            // count = 0;
+
+          } 
+          // else {
+          //   vm.moved = 'not moving ' + count++;
+          // }
+
+            // vm.lat = 'newLat: ' + newLat + ' | oldLat: ' + oldLat;
+            // vm.lon = 'newLon: ' + newLon + ' | oldLon: ' + oldLon;
+          // console.log(position.coords.latitude);
+          // console.log(typeof position.coords.latitude);
+        });
+    }
+
+    map.addListener('dragstart', function (event) {
+      // console.log('watchID: ', watch.watchID);
+      watch.clearWatch(watch.watchID);
+      $timeout(startWatch, 10000);
     });
+
+    // watch.clearWatch();
+
+    // $cordovaGeolocation.clearWatch(watch)
+    // .then(function (result) {
+    //   console.log('watch is cleared');
+    //   console.log('result: ', result);
+    //   return result;
+    // })
+    // .catch(function (err) {
+    //   console.log('line111: err: ', err);
+    //   return err;
+    // });
+
+    // vm.recenter = function () {
+    //   console.log('recenter clicked');
+    //   getGeoLoc();
+    // };
+ 
   }
-
-  var watchOptions = {
-    timeout : 3000,
-    enableHighAccuracy: false // may cause errors if true
-  };
-
-  var watch = $cordovaGeolocation.watchPosition(watchOptions);
-
-  watch.then(
-    null, function(err) {
-      console.log(err);
-    },
-    function(position) {
-      console.log('position: ',position);
-    });
-
-  watch.clearWatch();
-
-}
 
 })();
