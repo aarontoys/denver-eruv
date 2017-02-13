@@ -13,7 +13,7 @@
 
     reportService.getReport()
     .then(function (result) {
-      console.log(result);
+      // console.log(result);
       vm.report = result.data.result;
     })
     .catch(function (err) {
@@ -24,7 +24,7 @@
     vm.doRefresh = function () {
       reportService.getReport()
       .then(function (result) {
-        console.log(result);
+        // console.log(result);
         vm.report = result.data.result;
       })
       .catch(function (err) {

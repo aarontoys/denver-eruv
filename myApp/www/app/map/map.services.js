@@ -47,8 +47,8 @@
         //   });
         return $http.get(uri+'map?lat='+lat+'&lon='+lon)
         .then(function (result) {
-          console.log(result);
-                   /*return*/ console.log(result.data.result.results[0].formatted_address);
+          // console.log(result);
+                   // /*return*/ console.log(result.data.result.results[0].formatted_address);
             myPosition.myLat = lat;
             myPosition.myLon = lon;
             /*return*/ address.address = result.data.result.results[0].formatted_address;
@@ -68,7 +68,7 @@
             var lon = position.coords.longitude;
             myPosition.myLat = lat;
             myPosition.myLon = lon;
-            console.log('lat: ',lat, 'long: ',lon);
+            // console.log('lat: ',lat, 'long: ',lon);
             return position.coords;
           }, function(err) {
             // error
@@ -77,11 +77,11 @@
 
       },
       getPosition: function () {
-        console.log('myPosition ', myPosition);
+        // console.log('myPosition ', myPosition);
         return myPosition;
       },
       getAddress: function () {
-        console.log('address ', address);
+        // console.log('address ', address);
         return address;
       }
     };
