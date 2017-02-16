@@ -2,18 +2,21 @@
   <ion-content>
     <ion-refresher
       pulling-text="Pull to refresh..."
-      on-refresh="vm.doRefresh()">
+      on-refresh="vm.getReport()">
     </ion-refresher>
     <div class="list">
-      <div class="item item-divider">
-        Report
+      <div ng-repeat="severity in vm.severities | orderBy: 'severity_id'">
+        <div class="item item-divider">
+          {{severity.severity}}
+        </div>
+        <a class="item item item-thumbnail-left item-icon-right" ng-repeat="item in vm.report | filter:{severity_id:severity.id} | orderBy: '-id'" href="#/tab/reportView/{{item.id}}" ng-show="item.status">
+          <img ng-src={{item.img}} height="100px">
+          <h2>{{item.id}}</h2>
+          <p>Issue: {{item.issue}}</p>
+          <p>Severity: {{item.severity}}</p>
+          <p>{{item.address}}</p>
+        </a>  
       </div>
-      <a class="item item item-thumbnail-left" ng-repeat="item in vm.report | orderBy: 'id'" href="#/tab/reportView/{{item.id}}">
-        <img ng-src={{item.img}} height="100px">
-        <h2>{{item.id}}</h2>
-        <p>Issue: {{item.issue}}</p>
-        <p>Severity: {{item.severity}}</p>
-        <p>{{item.address}}</p>
-    </a>  
+    </div>
   </ion-content>
 </ion-view>
