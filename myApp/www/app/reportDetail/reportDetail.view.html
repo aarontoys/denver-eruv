@@ -1,9 +1,14 @@
 <ion-view>
   <ion-content>
     <h3>Report Detail</h3>
-    <!-- <p>{{vm.detail.id}}</p> -->
-    <p><strong>Issue: </strong>{{vm.detail.issue}}</p>
-    <p><strong>Severity: </strong>{{vm.detail.severity}}</p>
+    <div class="item">
+      <p><strong>Issue: </strong>{{vm.detail.issue}}</p>
+      <p><strong>Severity: </strong>{{vm.detail.severity}}</p>
+      <input type="text" value="{{vm.detail.address}}" style="width: 100%; background-color: #fff" readonly>
+      <div class="item-icon-right">
+        <i class="icon ion-checkmark-circled balanced" ng-click="vm.updateStatus(vm.detail.id)"></i>
+      </div>
+    </div>
     <img ng-src={{vm.detail.img}} width="100%">
     <br>
     <div id="map"></div>
