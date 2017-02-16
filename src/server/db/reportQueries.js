@@ -7,12 +7,12 @@ var Report = function () {
           .join('severities', 'report_log.severity_id', '=', 'severities.id')
           .select('report_log.id','report_log.user_id','report_log.issue_id','report_log.severity_id',
             'report_log.address','report_log.lat','report_log.lon','report_log.img','report_log.other_issue',
-            'report_log.other_severity','report_log.created_at','report_log.updated_at','severities.severity',
-            'issues.issue');
+            'report_log.other_severity','report_log.created_at','report_log.updated_at','report_log.status',
+            'severities.severity','issues.issue');
           // .select('report_log.id');
 };
 
-function addLog (userId, issueId, severityId, address, lat, lon, img) {
+function addLog (userId, issueId, severityId, address, lat, lon, img, status) {
   // console.log('line6', userId);
   return Report()
   .insert({
@@ -23,6 +23,7 @@ function addLog (userId, issueId, severityId, address, lat, lon, img) {
       lat: lat,
       lon: lon,
       img: img,
+      status: status,
       created_at: now,
       updated_at: now
   }, 'id');

@@ -21,7 +21,7 @@
     }
 
     return {
-      createLogItem: function (userId, issueId, severityId, address, position, img) {
+      createLogItem: function (userId, issueId, severityId, address, position, img, status) {
         return $http.post(uri+'report/postLog', {
           userId: userId,
           issueId: issueId,
@@ -29,7 +29,8 @@
           address: address,
           lat: position.myLat,
           lon: position.myLon,
-          img: img
+          img: img,
+          status: status
         })
         .then(function (result) {
           console.log(result)

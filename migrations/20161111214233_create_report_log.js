@@ -11,6 +11,7 @@ exports.up = function(knex, Promise) {
     table.text('img');
     table.string('other_issue');
     table.string('other_severity');
+    table.integer('status');
     table.timestamps();
   });
 };
