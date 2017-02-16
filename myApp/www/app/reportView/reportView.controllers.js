@@ -4,35 +4,39 @@
   .module('starter')
   .controller('reportViewCtrl', reportViewCtrl);
 
-  reportViewCtrl.$inject = ['mapService', 'reportService', '$cordovaCamera']
+  reportViewCtrl.$inject = ['$scope', 'mapService', 'reportService', 'logService','$cordovaCamera'];
 
-  function reportViewCtrl (mapService, reportService, $cordovaCamera) {
+  function reportViewCtrl ($scope, mapService, reportService, logService, $cordovaCamera) {
     var vm = this;
 
     vm.test = "hello worlds!";
 
-    reportService.getReport()
-    .then(function (result) {
-      // console.log(result);
-      vm.report = result.data.result;
-    })
-    .catch(function (err) {
-      console.log(err);
-      return err;
+    $scope.$on('$ionicView.enter', function(e) {
+      vm.getReport();
+      // $ionicScrollDelegate.scrollTop();
     });
 
-    vm.doRefresh = function () {
+    vm.getReport = function () {
       reportService.getReport()
       .then(function (result) {
-        // console.log(result);
         vm.report = result.data.result;
+        $scope.$broadcast('scroll.refreshComplete');
       })
       .catch(function (err) {
         console.log(err);
         return err;
       });
     }
-  }
 
+    logService.getDropDownData()
+    .then(function (result) {
+      vm.issues = result.issues;
+      vm.severities = result.severities;
+    })
+    .catch(function (err) {
+      console.log(err);
+      return err;
+    })
+  }
 
 })();
