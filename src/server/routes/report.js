@@ -97,6 +97,17 @@ router.post('/postLog', function (req, res, next) {
   });
 });
 
+router.post('/updateStatus/:id', function (req, res, next) {
+  var id = parseInt(req.params.id);
+  Report.updateStatus(id)
+  .then(function (resultId) {
+    res.status(200).json({
+      status: 'success',
+      result: resultId
+    });
+  });
+});
+
 router.get('/', function (req, res, next) {
   Report.getLog()
   .then(function (result) {

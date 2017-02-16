@@ -38,8 +38,17 @@ function getLogDetail (id) {
   .where('report_log.id', id)
 }
 
+function updateStatus (id) {
+  return Report()
+  .where('report_log.id', id)
+  .update({
+    status: 0
+  }, 'id')
+}
+
 module.exports = {
   addLog: addLog,
   getLog: getLog,
-  getLogDetail: getLogDetail
+  getLogDetail: getLogDetail,
+  updateStatus: updateStatus
 };
