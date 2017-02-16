@@ -4,9 +4,9 @@
   .module('starter')
   .controller('reportDetailCtrl', reportDetailCtrl);
 
-  reportDetailCtrl.$inject = ['$stateParams', 'reportService'];
+  reportDetailCtrl.$inject = ['$stateParams', '$location', 'reportService', 'reportDetailService'];
 
-  function reportDetailCtrl ($stateParams, reportService) {
+  function reportDetailCtrl ($stateParams, $location,reportService, reportDetailService) {
     var vm = this;
 
     vm.test = 'report detail working';
@@ -47,6 +47,12 @@
       });
     }
 
+    vm.updateStatus = function (id) {
+      reportDetailService.updateStatus(id)
+      .then(function (result) {
+        $location.path('tab/reportView');
+      })
+    }
 
   }
 
