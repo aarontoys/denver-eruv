@@ -4,7 +4,7 @@ exports.seed = function(knex, Promise) {
   return knex('report_log').del()
   .then(function () {
     return knex('report_log').insert({
-      id: 66,
+      id: 11,
       user_id: 1,
       issue_id: 2,
       severity_id: 4,
@@ -21,7 +21,7 @@ exports.seed = function(knex, Promise) {
   })
   .then(function () {
     return knex('report_log').insert({
-      id: 53,
+      id: 1,
       user_id: 1,
       issue_id: 2,
       severity_id: 4,
@@ -38,7 +38,7 @@ exports.seed = function(knex, Promise) {
   })
   .then(function () {
     return knex('report_log').insert({
-      id: 60,
+      id: 8,
       user_id: 1,
       issue_id: 2,
       severity_id: 4,
@@ -55,7 +55,7 @@ exports.seed = function(knex, Promise) {
   })
   .then(function () {
     return knex('report_log').insert({
-      id: 65,
+      id: 10,
       user_id: 1,
       issue_id: 2,
       severity_id: 2,
@@ -72,7 +72,7 @@ exports.seed = function(knex, Promise) {
   })
   .then(function () {
     return knex('report_log').insert({
-      id: 54,
+      id: 2,
       user_id: 1,
       issue_id: 2,
       severity_id: 4,
@@ -89,7 +89,7 @@ exports.seed = function(knex, Promise) {
   })
   .then(function () {
     return knex('report_log').insert({
-      id: 55,
+      id: 3,
       user_id: 1,
       issue_id: 2,
       severity_id: 4,
@@ -106,7 +106,7 @@ exports.seed = function(knex, Promise) {
   })
   .then(function () {
     return knex('report_log').insert({
-      id: 56,
+      id: 4,
       user_id: 1,
       issue_id: 4,
       severity_id: 2,
@@ -123,7 +123,7 @@ exports.seed = function(knex, Promise) {
   })
   .then(function () {
     return knex('report_log').insert({
-      id: 57,
+      id: 5,
       user_id: 1,
       issue_id: 2,
       severity_id: 4,
@@ -140,7 +140,7 @@ exports.seed = function(knex, Promise) {
   })
   .then(function () {
     return knex('report_log').insert({
-      id: 58,
+      id: 6,
       user_id: 1,
       issue_id: 2,
       severity_id: 4,
@@ -157,7 +157,7 @@ exports.seed = function(knex, Promise) {
   })
   .then(function () {
     return knex('report_log').insert({
-      id: 59,
+      id: 7,
       user_id: 1,
       issue_id: 2,
       severity_id: 4,
@@ -174,7 +174,7 @@ exports.seed = function(knex, Promise) {
   })
   .then(function () {
     return knex('report_log').insert({
-      id: 61,
+      id: 9,
       user_id: 1,
       issue_id: 2,
       severity_id: 4,
