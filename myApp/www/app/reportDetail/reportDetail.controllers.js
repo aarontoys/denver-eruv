@@ -33,7 +33,7 @@
     initMap();
 
     function initMap (latLon) {
-      map = new google.maps.Map(document.getElementById('map'), {
+      map = new google.maps.Map(document.getElementById('detail-map'), {
         center: {lat: 39.71788288458772, lng: -104.91222381591797},
         scrollwheel: false,
         zoom: 13

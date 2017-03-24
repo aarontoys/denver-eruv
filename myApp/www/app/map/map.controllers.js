@@ -46,7 +46,7 @@
     function initMap () {
       // Create a map object and specify the DOM element for display.
       // console.log('working?');
-      map = new google.maps.Map(document.getElementById('map'), {
+      map = new google.maps.Map(document.getElementById('report-map'), {
         center: {lat: 39.71788288458772, lng: -104.91222381591797},
         scrollwheel: false,
         zoom: 13
