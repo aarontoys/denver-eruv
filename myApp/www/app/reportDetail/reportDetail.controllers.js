@@ -4,9 +4,9 @@
   .module('starter')
   .controller('reportDetailCtrl', reportDetailCtrl);
 
-  reportDetailCtrl.$inject = ['$stateParams', '$location', 'reportService', 'reportDetailService'];
+  reportDetailCtrl.$inject = ['$stateParams', '$location', 'reportService', 'reportDetailService', '$cordovaClipboard', '$cordovaToast'];
 
-  function reportDetailCtrl ($stateParams, $location,reportService, reportDetailService) {
+  function reportDetailCtrl ($stateParams, $location,reportService, reportDetailService, $cordovaClipboard, $cordovaToast) {
     var vm = this;
 
     vm.test = 'report detail working';
@@ -18,7 +18,6 @@
     reportService.getReportDetail(id)
     .then(function (result) {
       vm.detail = result.data.result[0];
-      // console.log(+vm.detail.lat);
       map.setCenter({lat: +vm.detail.lat, lng: +vm.detail.lon});
       map.setZoom(16);
       addMarker({lat: +vm.detail.lat, lng: +vm.detail.lon})
@@ -52,6 +51,20 @@
       .then(function (result) {
         $location.path('tab/reportView');
       })
+    }
+
+    vm.copyAddress = function (lat, lon) {
+      $cordovaClipboard
+      .copy(lat+','+lon)
+      .then(function () {
+        // console.log('address copied')
+        $cordovaToast.showShortCenter('copied');
+      })
+      .catch(function (err) {
+        // console.log('there was an error: ', err)
+        $cordovaToast.showShortCenter('copy failed: ', err);
+
+      });
     }
 
   }

@@ -9,6 +9,7 @@
       <p><strong>Address:</strong></p><input type="text" value="{{vm.detail.address}}" style="width: 100%; background-color: #fff" readonly>
       <div class="item-icon-right">
         <i class="icon ion-checkmark-circled balanced" ng-click="vm.updateStatus(vm.detail.id)"></i>
+        <i class="icon ion-ios-copy positive" ng-click="vm.copyAddress(vm.detail.lat, vm.detail.lon)"></i>
       </div>
     </div>
     <img ng-src={{vm.detail.img}} width="100%">

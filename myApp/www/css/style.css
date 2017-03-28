@@ -26,3 +26,13 @@
   margin: 10px 20px;
   /*margin-left: 20px;*/
 }
+
+.item-icon-right .icon.ion-checkmark-circled {
+  top: 20px;
+  align-items: flex-start;
+}
+
+.item-icon-right .icon.ion-ios-copy {
+  top: -20px;
+  align-items: flex-end;
+}
