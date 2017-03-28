@@ -86,15 +86,19 @@ router.post('/addCoords', function(req, res, next) {
 
 router.post('/postLog', function (req, res, next) {
   var body = req.body;
-  console.log('line75: body: '/*, body*/);
-  Report.addLog(body.userId, body.issueId, body.severityId, body.address, body.lat, body.lon, body.img, body.status)
+  console.log('line75: body: ', body);
+  Report.addLog(body.userId, body.issueId, body.severityId, body.address, body.lat, body.lon, body.img, body.status, body.comments, body.bucket_truck)
   .then(function (id) {
     console.log('line78 return id: ', id);
     res.status(200).json({
       status: 'success',
       result: id
     });
-  });
+  })
+  .catch(function (err) {
+    console.log('error report.js line99: ', err);
+    return next(err);
+  })
 });
 
 router.post('/updateStatus/:id', function (req, res, next) {
@@ -117,7 +121,7 @@ router.get('/', function (req, res, next) {
     });
   })
   .catch(function (err) {
-    console.log('error: report.js: line93: ', err);
+    console.log('error: report.js: line124: ', err);
     return next(err);
   });
 });

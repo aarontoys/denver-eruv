@@ -21,7 +21,9 @@
     }
 
     return {
-      createLogItem: function (userId, issueId, severityId, address, position, img, status) {
+      createLogItem: function (userId, issueId, severityId, address, position, img, status, comments, bucket_truck) {
+        console.log('bucket_truck: ', +bucket_truck);
+        console.log('comments: ', comments);
         return $http.post(uri+'report/postLog', {
           userId: userId,
           issueId: issueId,
@@ -30,10 +32,11 @@
           lat: position.myLat,
           lon: position.myLon,
           img: img,
-          status: status
+          status: status,
+          comments: comments,
+          bucket_truck: +bucket_truck
         })
         .then(function (result) {
-          console.log(result)
           return result.data.result;
         })
         .catch(function (err) {

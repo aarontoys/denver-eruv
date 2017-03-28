@@ -1,10 +1,12 @@
 <ion-view>
   <ion-content>
     <h3>Report Detail</h3>
-    <div class="item">
+    <div class="item item-text-wrap">
       <p><strong>Issue: </strong>{{vm.detail.issue}}</p>
       <p><strong>Severity: </strong>{{vm.detail.severity}}</p>
-      <input type="text" value="{{vm.detail.address}}" style="width: 100%; background-color: #fff" readonly>
+      <p><strong>Bucket Truck: </strong>{{vm.detail.bucket_truck ? 'Yes' : 'No'}}</p>
+      <p><strong>Comments: </strong>{{vm.detail.comments}}</p>
+      <p><strong>Address:</strong></p><input type="text" value="{{vm.detail.address}}" style="width: 100%; background-color: #fff" readonly>
       <div class="item-icon-right">
         <i class="icon ion-checkmark-circled balanced" ng-click="vm.updateStatus(vm.detail.id)"></i>
       </div>

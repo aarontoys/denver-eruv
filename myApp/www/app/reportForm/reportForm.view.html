@@ -10,7 +10,7 @@
                 border-top-width: 0px;
                 border-bottom-width: 0px;">
             <span class="input-label" style="color: #666">Latitude:</span>
-            <input type="text" placeholder="Suhr" value="{{vm.position.myLat}}">
+            <input type="text" placeholder="Latitude" value="{{vm.position.myLat}}">
           </label>
         </div>
         <div class="col" style="padding: 0px">
@@ -18,35 +18,13 @@
                 border-top-width: 0px;
                 border-bottom-width: 0px;">
             <span class="input-label" style="color: #666">Longitude:</span>
-            <input type="text" placeholder="Suhr" value="{{vm.position.myLon}}">
+            <input type="text" placeholder="Longitude" value="{{vm.position.myLon}}">
           </label>
         </div>
       </div>
-<!--       <label class="item item-input">
-        <div class="col">
-          <p>Lat:</p>
-        </div>
-        <div class="col">
-          <p>{{vm.test.myLat}}</p>
-        </div>
-      </label>
-      <label class="item item-input">
-        <div class="col">
-          <p>Lon:</p>
-        </div>
-        <div class="col">
-          <p>{{vm.test.myLon}}</p>
-        </div>
-      </label> -->
       <label class="item item-input item-stacked-label">
-<!--         <div class="col">
-          <p>Approx Address</p>
-        </div>
-        <div class="col">
-          <p>{{vm.address.address}}</p>
-        </div> -->
         <span class="input-label">Approx Address</span>
-        <input type="text" placeholder="Suhr" value="{{vm.address.address}}">
+        <input type="text" placeholder="Address loading. . . " value="{{vm.address.address}}">
       </label>
       <div class="item item-divider">
         Reporting:
@@ -58,13 +36,7 @@
         <select ng-model="vm.issue" ng-options="issue.id as issue.issue for issue in vm.issues">
           <option value= "" disabled selected="selected">Issue:</option>
         </select>
-<!--         <select>
-          <option>Pole</option>
-          <option>Lechi</option>
-          <option>Fence</option>
-          <option>String</option>
-          <option>Other</option>
-        </select> -->
+
       </label>      
       <label class="item item-input item-select">
         <div class="input-label">
@@ -73,23 +45,20 @@
         <select ng-model="vm.severity" ng-options="severity.id as severity.severity for severity in vm.severities">
           <option value= "" disabled selected="selected">Severity:</option>
         </select>
-
-<!--         <select>
-          <option>Eruv is Down</option>
-          <option>Needs 2nd Opinion</option>
-          <option>Question</option>
-          <option>Maintenance Issue (still up)</option>
-          <option>Other</option>
-        </select> -->
       </label>
-      <!-- <button  class="button button-block style="font-size: 50px"> -->
-        <i class="icon ion-camera text-center positive" style="font-size: 150px; display: block;" ng-click="vm.takePhoto()"></i>
-      <!-- </button> -->
-      <button class="button button-block button-positive" ng-click="vm.submit(vm.issue, vm.severity)">Submit</button>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Comments:</span>
+        <textarea placeholder="Add any additional comments or info here. . ." ng-model="vm.comments"></textarea>
+      </label>
+      <ion-checkbox ng-model="vm.bucket_truck">Need Bucket Truck</ion-checkbox>
+      <i class="icon ion-camera text-center positive" style="font-size: 150px; display: block;" ng-click="vm.takePhoto()"></i>
+      <button class="button button-block button-positive" ng-click="vm.submit(vm.issue, vm.severity)" ng-disabled="!(vm.imgLen < 100000)">Submit</button>
+
       <p>Img Len: {{vm.imgLen}}</p>
       <p>Success: {{vm.success}}</p>
       <p>Id: {{vm.id}}</p>
-      <!-- <img src="" id="myImage" width="100%"> -->
+
       <img ng-src={{vm.img}} width="100%">
     </div>
   </ion-content>
