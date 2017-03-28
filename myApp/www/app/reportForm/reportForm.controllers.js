@@ -4,16 +4,14 @@
   .module('starter')
   .controller('reportFormCtrl', reportFormCtrl);
 
-  reportFormCtrl.$inject = ['mapService', 'logService', '$cordovaCamera']
+  reportFormCtrl.$inject = ['mapService', 'logService', '$cordovaCamera', '$cordovaToast']
 
-  function reportFormCtrl (mapService, logService, $cordovaCamera) {
+  function reportFormCtrl (mapService, logService, $cordovaCamera, $cordovaToast) {
     var vm = this;
     vm.position = mapService.getPosition();
     vm.address = mapService.getAddress();
-    // vm.address = 'test';
-    vm.takePhoto = function () {
-      console.log('click works!');
-      var options = {
+
+    var options = {
         quality: 50,
         destinationType: Camera.DestinationType.DATA_URL,
         sourceType: Camera.PictureSourceType.CAMERA,
@@ -24,31 +22,41 @@
         popoverOptions: CameraPopoverOptions,
         saveToPhotoAlbum: true,
         correctOrientation:true
-      };
+    };
+
+    vm.takePhoto = function () {
 
       $cordovaCamera.getPicture(options).then(function(imageData) {
-        console.log(imageData);
-        // console.log(imageData.length);
 
-        // var image = document.getElementById('myImage');
-        vm.img = "data:image/jpeg;base64," + imageData;
         vm.imgLen = imageData.length;
+
+        if (vm.imgLen > 100000) {
+
+          $cordovaToast.showShortCenter('Image was too large, please try again . . .')
+          var factor = Math.sqrt(1 - (vm.imgLen - 90000)/vm.imgLen);
+          options.targetWidth = Math.round(options.targetWidth * factor);
+          options.targetHeight = Math.round(options.targetHeight * factor);
+
+        }
+
+        vm.img = "data:image/jpeg;base64," + imageData;
+        
       }, function(err) {
-        // error
+
         console.log(err);
       });
 
-    // }, false);
-
     };
 
-    // vm.submit = () => logService.createLogItem (0,0,0,'7337 E Cedar','lat','lon','base64 text');
+
     vm.submit = function (issue, severity) {
       logService.createLogItem (1,issue,severity,vm.address.address,vm.position,vm.img,1,vm.comments, vm.bucket_truck)
       .then(function (result) {
         if (result[0]) {
           vm.success = 'Successful! Id = ' + result[0];
           vm.id = result[0];
+          options.targetWidth = 1008;
+          options.targetHeight = 756;
         } else {
           vm.success = 'Image is too large. Please try again'
         }
@@ -64,15 +72,13 @@
     .then(function (result) {
       vm.issues = result.issues;
       vm.severities = result.severities;
-      console.log(vm.issues);
+
     })
     .catch(function (err) {
       console.log(err);
       return err;
     })
 
-    // vm.issues = dropDowns.reportFormCtrl
-    // }
   }
 
 
