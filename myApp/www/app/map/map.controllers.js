@@ -54,18 +54,18 @@
       getGeoLoc();
     }
 
-    var line = new google.maps.Polyline({
-      path: [
-          {lat: 39.708184153118765, lng: -104.90341007709503}, 
-          {lat: 39.70029155733921, lng: -104.90341544151306}
-      ],
-      strokeColor: "#FF0000",
-      strokeOpacity: 1.0,
-      strokeWeight: 2,
-      // setMap: map
-    });
+    // var line = new google.maps.Polyline({
+    //   path: [
+    //       {lat: 39.708184153118765, lng: -104.90341007709503}, 
+    //       {lat: 39.70029155733921, lng: -104.90341544151306}
+    //   ],
+    //   strokeColor: "#FF0000",
+    //   strokeOpacity: 1.0,
+    //   strokeWeight: 2,
+    //   // setMap: map
+    // });
 
-    line.setMap(map);
+    // line.setMap(map);
 
     map.addListener('click', function(event) {
       // console.log('test', event.latLng.lat(),', ', event.latLng.lng());

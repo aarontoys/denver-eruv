@@ -58,11 +58,11 @@
       .copy(lat+','+lon)
       .then(function () {
         // console.log('address copied')
-        $cordovaToast.showShortCenter('copied');
+        $cordovaToast.showShortTop('copied');
       })
       .catch(function (err) {
         // console.log('there was an error: ', err)
-        $cordovaToast.showShortCenter('copy failed: ', err);
+        $cordovaToast.showShortTop('copy failed: ', err);
 
       });
     }
