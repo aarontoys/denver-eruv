@@ -39,7 +39,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client')));
-// app.use('/ionic', express.static(path.join(__dirname, '../../myApp/www')));
+app.use(express.static(path.join(__dirname, '../../myApp/www')));
 
 // *** allow CORS *** //
 app.use(function(req, res, next) {
