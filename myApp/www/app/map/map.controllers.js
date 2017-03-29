@@ -4,9 +4,9 @@
   .module('starter')
   .controller('mapCtrl', mapCtrl);
 
-  mapCtrl.$inject = ['mapService', '$location', '$timeout', '$cordovaGeolocation', '$cordovaCamera'];
+  mapCtrl.$inject = ['mapService', '$location', '$timeout', '$cordovaGeolocation'];
 
-  function mapCtrl (mapService, $location, $timeout, $cordovaGeolocation, $cordovaCamera) {
+  function mapCtrl (mapService, $location, $timeout, $cordovaGeolocation) {
     var vm = this;
 
     // vm.test = 'hello world';

@@ -4,9 +4,9 @@
   .module('starter')
   .controller('reportViewCtrl', reportViewCtrl);
 
-  reportViewCtrl.$inject = ['$scope', 'mapService', 'reportService', 'logService','$cordovaCamera'];
+  reportViewCtrl.$inject = ['$scope', 'mapService', 'reportService', 'logService'];
 
-  function reportViewCtrl ($scope, mapService, reportService, logService, $cordovaCamera) {
+  function reportViewCtrl ($scope, mapService, reportService, logService) {
     var vm = this;
 
     vm.test = "hello worlds!";
