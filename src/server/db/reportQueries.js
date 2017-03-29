@@ -31,11 +31,12 @@ function addLog (userId, issueId, severityId, address, lat, lon, img, status, co
   }, 'id')
   .then(function (result) {
     console.log('then hit: ', result)
+    return result;
   })
   .catch(function (err) {
     console.log('error: ', err)
     return err;
-  })
+  });
 }
 
 function getLog () {
