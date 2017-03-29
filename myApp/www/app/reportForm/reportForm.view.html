@@ -53,7 +53,8 @@
       </label>
       <ion-checkbox ng-model="vm.bucket_truck">Need Bucket Truck</ion-checkbox>
       <i class="icon ion-camera text-center positive" style="font-size: 150px; display: block;" ng-click="vm.takePhoto()"></i>
-      <button class="button button-block button-positive" ng-click="vm.submit(vm.issue, vm.severity)" ng-disabled="!(vm.imgLen < 100000)">Submit</button>
+      <p class="text-center"><strong>{{vm.message}}</strong></p>
+      <button class="button button-block button-positive" ng-click="vm.submit(vm.issue, vm.severity)" ng-disabled="(!(vm.imgLen < 100000) && vm.isMobile)">Submit</button>
 
       <p>Img Len: {{vm.imgLen}}</p>
       <p>Success: {{vm.success}}</p>

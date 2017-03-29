@@ -11,6 +11,8 @@
 
     vm.test = 'report detail working';
 
+    vm.isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
     // console.log('report detail console log');
     // console.log('id: ', $stateParams.reportId);
     var id = $stateParams.reportId;
@@ -54,17 +56,19 @@
     }
 
     vm.copyAddress = function (lat, lon) {
-      $cordovaClipboard
-      .copy(lat+','+lon)
-      .then(function () {
-        // console.log('address copied')
-        $cordovaToast.showShortTop('copied');
-      })
-      .catch(function (err) {
-        // console.log('there was an error: ', err)
-        $cordovaToast.showShortTop('copy failed: ', err);
 
-      });
+      if(vm.isMobile) {      
+        $cordovaClipboard
+        .copy(lat+','+lon)
+        .then(function () {
+          // console.log('address copied')
+          $cordovaToast.showShortTop('copied');
+        })
+        .catch(function (err) {
+          // console.log('there was an error: ', err)
+          $cordovaToast.showShortTop('copy failed: ', err);
+        });
+      }
     }
 
   }

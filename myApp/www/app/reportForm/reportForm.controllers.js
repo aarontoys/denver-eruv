@@ -11,7 +11,10 @@
     vm.position = mapService.getPosition();
     vm.address = mapService.getAddress();
 
-    var options = {
+    vm.isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (vm.isMobile) {
+      var options = {
         quality: 50,
         destinationType: Camera.DestinationType.DATA_URL,
         sourceType: Camera.PictureSourceType.CAMERA,
@@ -22,29 +25,35 @@
         popoverOptions: CameraPopoverOptions,
         saveToPhotoAlbum: true,
         correctOrientation:true
-    };
+      };
+    }
 
     vm.takePhoto = function () {
 
-      $cordovaCamera.getPicture(options).then(function(imageData) {
+      if(vm.isMobile) {
+        $cordovaCamera.getPicture(options).then(function(imageData) {
 
-        vm.imgLen = imageData.length;
+          vm.imgLen = imageData.length;
 
-        if (vm.imgLen > 100000) {
+          if (vm.imgLen > 100000) {
 
-          $cordovaToast.showShortCenter('Image was too large, please try again . . .')
-          var factor = Math.sqrt(1 - (vm.imgLen - 90000)/vm.imgLen);
-          options.targetWidth = Math.round(options.targetWidth * factor);
-          options.targetHeight = Math.round(options.targetHeight * factor);
+            $cordovaToast.showShortCenter('Image was too large, please try again . . .')
+            var factor = Math.sqrt(1 - (vm.imgLen - 90000)/vm.imgLen);
+            options.targetWidth = Math.round(options.targetWidth * factor);
+            options.targetHeight = Math.round(options.targetHeight * factor);
 
-        }
+          }
 
-        vm.img = "data:image/jpeg;base64," + imageData;
-        
-      }, function(err) {
+          vm.img = "data:image/jpeg;base64," + imageData;
+          
+        }, function(err) {
 
-        console.log(err);
-      });
+          console.log(err);
+        });
+
+      } else {
+        vm.message = 'The ability to take a photo requires a mobile deveice'
+      }
 
     };
 
@@ -55,8 +64,10 @@
         if (result[0]) {
           vm.success = 'Successful! Id = ' + result[0];
           vm.id = result[0];
-          options.targetWidth = 1008;
-          options.targetHeight = 756;
+          if (vm.isMobile) {     
+            options.targetWidth = 1008;
+            options.targetHeight = 756;
+          }
         } else {
           vm.success = 'Image is too large. Please try again'
         }
