@@ -26,7 +26,7 @@
         console.log('comments: ', comments);
         return $http.post(uri+'report/postLog', {
           userId: userId,
-          issueId: issueId,
+          issueId: +issueId,
           severityId: severityId,
           address: address,
           lat: position.myLat,
