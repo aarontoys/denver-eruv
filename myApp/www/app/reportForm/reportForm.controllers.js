@@ -59,7 +59,7 @@
 
 
     vm.submit = function (issue, severity) {
-      logService.createLogItem (1,issue,severity,vm.address.address,vm.position,vm.img,1,vm.comments, vm.bucket_truck)
+      logService.createLogItem (2,issue,severity,vm.address.address,vm.position,vm.img,1,vm.comments, vm.bucket_truck)
       .then(function (result) {
         if (result[0]) {
           vm.success = 'Successful! Id = ' + result[0];
