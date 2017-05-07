@@ -68,7 +68,7 @@
             var lon = position.coords.longitude;
             myPosition.myLat = lat;
             myPosition.myLon = lon;
-            // console.log('lat: ',lat, 'long: ',lon);
+            console.log('lat: ',lat, 'long: ',lon);
             return position.coords;
           }, function(err) {
             // error

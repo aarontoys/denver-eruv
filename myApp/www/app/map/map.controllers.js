@@ -19,7 +19,8 @@
 
     var posOptions = {timeout: 10000, enableHighAccuracy: true};
 
-    // console.log('line20: ', mapService.getPosition());
+    console.log('line20: ', mapService.getPosition());
+    console.log('lat: ',lat, 'long: ',lon);
 
     function getGeoLoc () {
       $cordovaGeolocation
@@ -46,6 +47,11 @@
     function initMap () {
       // Create a map object and specify the DOM element for display.
       // console.log('working?');
+
+      // var test = mapService.getPosition();
+      // console.log('test: ', test);
+      
+
       map = new google.maps.Map(document.getElementById('report-map'), {
         center: {lat: 39.71788288458772, lng: -104.91222381591797},
         scrollwheel: false,
