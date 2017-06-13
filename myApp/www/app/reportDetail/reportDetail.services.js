@@ -15,16 +15,16 @@
     // dev = true;
 
     if (dev) {
-      uri = 'http://localhost:5000/api/'
+      uri = 'http://localhost:5000/api/';
     } else {
-      uri = 'https://denver-eruv.herokuapp.com/api/'
+      uri = 'https://denver-eruv.herokuapp.com/api/';
     }
 
     return {
       updateStatus: function (id) {
         return $http.post(uri+'report/updateStatus/'+id)
         .then(function (result) {
-          console.log(result)
+          console.log(result);
           return result.data.result;
         })
         .catch(function (err) {
