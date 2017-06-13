@@ -15,9 +15,9 @@
     // dev = true;
 
     if (dev) {
-      uri = 'http://localhost:5000/api/'
+      uri = 'http://localhost:5000/api/';
     } else {
-      uri = 'https://denver-eruv.herokuapp.com/api/'
+      uri = 'https://denver-eruv.herokuapp.com/api/';
     }
 
     return {
