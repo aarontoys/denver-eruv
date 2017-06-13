@@ -13,49 +13,31 @@ exports.seed = function(knex, Promise) {
   .then(function () {
     return knex('severities').insert({
       id: 1,
-      severity: 'Pole - Caltrans'
+      severity: 'Eruv is down'
     });
   })
   .then(function () {
     return knex('severities').insert({
       id: 2,
-      severity: 'Pole - Regular Freestanding'
+      severity: 'Need 2nd opinion'
     });
   })
   .then(function () {
     return knex('severities').insert({
       id: 3,
-      severity: 'Pole - Strapped'
+      severity: 'Question'
     });
   })
   .then(function () {
     return knex('severities').insert({
       id: 4,
-      severity: 'Lechi - Wood'
+      severity: 'Maintenence Issue (still up)'
     });
   })
   .then(function () {
     return knex('severities').insert({
       id: 5,
-      severity: 'Fence Repair'
-    });
-  })
-  .then(function () {
-    return knex('severities').insert({
-      id: 6,
-      severity: 'Barracade'
-    });
-  })
-  .then(function () {
-    return knex('severities').insert({
-      id: 7,
-      severity: 'Wood Fence Lechi)'
-    });
-  })
-  .then(function () {
-    return knex('severities').insert({
-      id: 8,
-      severity: 'Lechi Sign - Freestanding'
+      severity: 'Other'
     });
   });
 };
