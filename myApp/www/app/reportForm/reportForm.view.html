@@ -29,7 +29,7 @@
       <div class="item item-divider">
         Reporting:
       </div>
-<!--       <label class="item item-input item-select">
+      <label class="item item-input item-select">
         <div class="input-label">
           Issue:
         </div>
@@ -37,13 +37,13 @@
           <option value= "" disabled selected="selected">Issue:</option>
         </select>
 
-      </label>  -->     
+      </label>      
       <label class="item item-input item-select">
         <div class="input-label">
-          New Pole Type:
+          Severity:
         </div>
         <select ng-model="vm.severity" ng-options="severity.id as severity.severity for severity in vm.severities">
-          <option value= "" disabled selected="selected">Type:</option>
+          <option value= "" disabled selected="selected">Severity:</option>
         </select>
       </label>
 
@@ -51,10 +51,10 @@
         <span class="input-label">Comments:</span>
         <textarea placeholder="Add any additional comments or info here. . ." ng-model="vm.comments"></textarea>
       </label>
-      <!-- <ion-checkbox ng-model="vm.bucket_truck">Need Bucket Truck</ion-checkbox> -->
+      <ion-checkbox ng-model="vm.bucket_truck">Need Bucket Truck</ion-checkbox>
       <i class="icon ion-camera text-center positive" style="font-size: 150px; display: block;" ng-click="vm.takePhoto()"></i>
       <p class="text-center"><strong>{{vm.message}}</strong></p>
-      <button class="button button-block button-positive" ng-click="vm.submit('1', vm.severity)" ng-disabled="(!(vm.imgLen < 100000) && vm.isMobile)">Submit</button>
+      <button class="button button-block button-positive" ng-click="vm.submit(vm.issue, vm.severity)" ng-disabled="(!(vm.imgLen < 100000) && vm.isMobile)">Submit</button>
 
       <p>Img Len: {{vm.imgLen}}</p>
       <p>Success: {{vm.success}}</p>
