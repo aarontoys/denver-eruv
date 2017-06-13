@@ -30,11 +30,9 @@
 .item-icon-right .icon.ion-checkmark-circled {
   top: 20px;
   align-items: flex-start;
-  height: 25%
 }
 
 .item-icon-right .icon.ion-ios-copy {
-  top: 115px;
+  top: -20px;
   align-items: flex-end;
-  height: 25%
 }
