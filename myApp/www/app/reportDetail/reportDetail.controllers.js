@@ -22,7 +22,7 @@
       vm.detail = result.data.result[0];
       map.setCenter({lat: +vm.detail.lat, lng: +vm.detail.lon});
       map.setZoom(16);
-      addMarker({lat: +vm.detail.lat, lng: +vm.detail.lon})
+      addMarker({lat: +vm.detail.lat, lng: +vm.detail.lon});
     })
     .catch(function (err) {
       console.log(err);
@@ -38,7 +38,7 @@
         center: {lat: 39.71788288458772, lng: -104.91222381591797},
         scrollwheel: false,
         zoom: 13
-      })
+      });
     }
 
     function addMarker (latLon) {
@@ -49,11 +49,12 @@
     }
 
     vm.updateStatus = function (id) {
+      console.log('status update clicked');
       reportDetailService.updateStatus(id)
       .then(function (result) {
         $location.path('tab/reportView');
-      })
-    }
+      });
+    };
 
     vm.copyAddress = function (lat, lon) {
 
@@ -69,7 +70,7 @@
           $cordovaToast.showShortTop('copy failed: ', err);
         });
       }
-    }
+    };
 
   }
 
